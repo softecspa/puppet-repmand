@@ -1,5 +1,6 @@
 class repmand ($www_group='www-data',$www_user='www-data') {
 
+  include ia32_libs
   $root_path='/opt/repmand'
 
   File {
@@ -61,12 +62,6 @@ class repmand ($www_group='www-data',$www_user='www-data') {
     owner   => 'root',
     group   => 'root',
     source  => 'puppet:///modules/repmand/etc/dbxdrivers.conf'
-  }
-
-  if $architecture == 'amd64' {
-    package {'ia32-libs':
-      ensure  => present
-    }
   }
 
 }
